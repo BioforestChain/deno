@@ -1714,16 +1714,16 @@ impl PermissionsContainer {
   }
 }
 
-impl deno_flash::FlashPermissions for PermissionsContainer {
-  #[inline(always)]
-  fn check_net<T: AsRef<str>>(
-    &mut self,
-    host: &(T, Option<u16>),
-    api_name: &str,
-  ) -> Result<(), AnyError> {
-    self.0.lock().net.check(host, Some(api_name))
-  }
-}
+// impl deno_flash::FlashPermissions for PermissionsContainer {
+//   #[inline(always)]
+//   fn check_net<T: AsRef<str>>(
+//     &mut self,
+//     host: &(T, Option<u16>),
+//     api_name: &str,
+//   ) -> Result<(), AnyError> {
+//     self.0.lock().net.check(host, Some(api_name))
+//   }
+// }
 
 impl deno_node::NodePermissions for PermissionsContainer {
   #[inline(always)]
@@ -1813,12 +1813,12 @@ impl deno_napi::NapiPermissions for PermissionsContainer {
   }
 }
 
-impl deno_ffi::FfiPermissions for PermissionsContainer {
-  #[inline(always)]
-  fn check(&mut self, path: Option<&Path>) -> Result<(), AnyError> {
-    self.0.lock().ffi.check(path)
-  }
-}
+// impl deno_ffi::FfiPermissions for PermissionsContainer {
+//   #[inline(always)]
+//   fn check(&mut self, path: Option<&Path>) -> Result<(), AnyError> {
+//     self.0.lock().ffi.check(path)
+//   }
+// }
 
 fn unit_permission_from_flag_bool(
   flag: bool,

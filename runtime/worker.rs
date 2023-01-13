@@ -246,7 +246,7 @@ impl MainWorker {
       deno_crypto::init(options.seed),
       deno_webgpu::init(unstable),
       // ffi
-      deno_ffi::init::<PermissionsContainer>(unstable),
+      // deno_ffi::init::<PermissionsContainer>(unstable),
       // Runtime ops
       ops::runtime::init(main_module.clone()),
       ops::worker_host::init(
@@ -274,7 +274,7 @@ impl MainWorker {
       ops::signal::init(),
       ops::tty::init(),
       deno_http::init(),
-      deno_flash::init::<PermissionsContainer>(unstable),
+      // deno_flash::init::<PermissionsContainer>(unstable),
       ops::http::init(),
       // Permissions ext (worker specific state)
       perm_ext,

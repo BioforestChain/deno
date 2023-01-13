@@ -222,15 +222,13 @@ delete Intl.v8BreakIterator;
     if (ObjectPrototypeIsPrototypeOf(ErrorPrototype, error)) {
       return null;
     } else if (typeof error == "string") {
-      return `Uncaught ${
-        inspectArgs([quoteString(error)], {
-          colors: !colors.getNoColor(),
-        })
-      }`;
+      return `Uncaught ${inspectArgs([quoteString(error)], {
+        colors: !colors.getNoColor(),
+      })
+        }`;
     } else {
-      return `Uncaught ${
-        inspectArgs([error], { colors: !colors.getNoColor() })
-      }`;
+      return `Uncaught ${inspectArgs([error], { colors: !colors.getNoColor() })
+        }`;
     }
   }
 
@@ -477,8 +475,8 @@ delete Intl.v8BreakIterator;
             ops.op_node_unstable_spawn_child,
           ),
         ),
-        serve: __bootstrap.flash.createServe(ops.op_node_unstable_flash_serve),
-        upgradeHttpRaw: __bootstrap.flash.upgradeHttpRaw,
+        // serve: __bootstrap.flash.createServe(ops.op_node_unstable_flash_serve),
+        // upgradeHttpRaw: __bootstrap.flash.upgradeHttpRaw,
         listenDatagram: __bootstrap.net.createListenDatagram(
           ops.op_node_unstable_net_listen_udp,
           ops.op_node_unstable_net_listen_unixpacket,
@@ -514,7 +512,7 @@ delete Intl.v8BreakIterator;
           __bootstrap.spawn.createSpawnSync(ops.op_spawn_sync),
           __bootstrap.spawn.createSpawnChild(ops.op_spawn_child),
         ),
-        serve: __bootstrap.flash.createServe(ops.op_flash_serve),
+        // serve: __bootstrap.flash.createServe(ops.op_flash_serve),
         listenDatagram: __bootstrap.net.createListenDatagram(
           ops.op_net_listen_udp,
           ops.op_net_listen_unixpacket,
@@ -618,8 +616,8 @@ delete Intl.v8BreakIterator;
             ops.op_node_unstable_spawn_child,
           ),
         ),
-        serve: __bootstrap.flash.createServe(ops.op_node_unstable_flash_serve),
-        upgradeHttpRaw: __bootstrap.flash.upgradeHttpRaw,
+        // serve: __bootstrap.flash.createServe(ops.op_node_unstable_flash_serve),
+        // upgradeHttpRaw: __bootstrap.flash.upgradeHttpRaw,
         listenDatagram: __bootstrap.net.createListenDatagram(
           ops.op_node_unstable_net_listen_udp,
           ops.op_node_unstable_net_listen_unixpacket,
@@ -647,7 +645,7 @@ delete Intl.v8BreakIterator;
           __bootstrap.spawn.createSpawnSync(ops.op_spawn_sync),
           __bootstrap.spawn.createSpawnChild(ops.op_spawn_child),
         ),
-        serve: __bootstrap.flash.createServe(ops.op_flash_serve),
+        // serve: __bootstrap.flash.createServe(ops.op_flash_serve),
         listenDatagram: __bootstrap.net.createListenDatagram(
           ops.op_net_listen_udp,
           ops.op_net_listen_unixpacket,

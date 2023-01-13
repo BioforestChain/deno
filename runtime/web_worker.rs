@@ -412,7 +412,7 @@ impl WebWorker {
       deno_crypto::init(options.seed),
       deno_webgpu::init(unstable),
       // ffi
-      deno_ffi::init::<PermissionsContainer>(unstable),
+      // deno_ffi::init::<PermissionsContainer>(unstable),
       // Runtime ops that are always initialized for WebWorkers
       ops::web_worker::init(),
       ops::runtime::init(main_module.clone()),
@@ -442,7 +442,7 @@ impl WebWorker {
       ops::signal::init(),
       ops::tty::init(),
       deno_http::init(),
-      deno_flash::init::<PermissionsContainer>(unstable),
+      // deno_flash::init::<PermissionsContainer>(unstable),
       ops::http::init(),
       // Permissions ext (worker specific state)
       perm_ext,

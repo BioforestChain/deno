@@ -524,7 +524,7 @@ fn op_umask(state: &mut OpState, mask: Option<u32>) -> Result<u32, AnyError> {
       let _ = umask(prev);
       prev
     };
-    #[cfg(target_os = "linux")]
+    #[cfg(any(target_os = "linux", target_os = "android"))]
     {
       Ok(r.bits())
     }

@@ -314,6 +314,55 @@ fn op_runtime_memory_usage(scope: &mut v8::HandleScope) -> MemoryUsage {
     external: s.external_memory(),
   }
 }
+#[cfg(target_os = "android")]
+fn rss() -> usize {
+  // Inspired by https://github.com/Arc-blroth/memory-stats/blob/5364d0d09143de2a470d33161b2330914228fde9/src/linux.rs
+
+  // Extracts a positive integer from a string that
+  // may contain leading spaces and trailing chars.
+  // Returns the extracted number and the index of
+  // the next character in the string.
+  fn scan_int(string: &str) -> (usize, usize) {
+    let mut out = 0;
+    let mut idx = 0;
+    let mut chars = string.chars().peekable();
+    while let Some(' ') = chars.next_if_eq(&' ') {
+      idx += 1;
+    }
+    for n in chars {
+      idx += 1;
+      if ('0'..='9').contains(&n) {
+        out *= 10;
+        out += n as usize - '0' as usize;
+      } else {
+        break;
+      }
+    }
+    (out, idx)
+  }
+
+  let statm_content = if let Ok(c) = std::fs::read_to_string("/proc/self/statm")
+  {
+    c
+  } else {
+    return 0;
+  };
+
+  // statm returns the virtual size and rss, in
+  // multiples of the page size, as the first
+  // two columns of output.
+  // SAFETY: libc call
+  let page_size = unsafe { libc::sysconf(libc::_SC_PAGESIZE) };
+
+  if page_size < 0 {
+    return 0;
+  }
+
+  let (_total_size_pages, idx) = scan_int(&statm_content);
+  let (total_rss_pages, _) = scan_int(&statm_content[idx..]);
+
+  total_rss_pages * page_size as usize
+}
 
 #[cfg(target_os = "linux")]
 fn rss() -> usize {

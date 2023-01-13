@@ -31,7 +31,7 @@ pub fn init() -> Extension {
     .ops(vec![
       op_http_start::decl(),
       op_http_upgrade::decl(),
-      op_flash_upgrade_http::decl(),
+      // op_flash_upgrade_http::decl(),
     ])
     .build()
 }
@@ -92,22 +92,22 @@ fn op_http_start(
   Err(bad_resource_id())
 }
 
-#[op]
-fn op_flash_upgrade_http(
-  state: &mut OpState,
-  token: u32,
-  server_id: u32,
-) -> Result<deno_core::ResourceId, AnyError> {
-  let flash_ctx = state.borrow_mut::<deno_flash::FlashContext>();
-  let ctx = flash_ctx.servers.get_mut(&server_id).unwrap();
+// #[op]
+// fn op_flash_upgrade_http(
+//   state: &mut OpState,
+//   token: u32,
+//   server_id: u32,
+// ) -> Result<deno_core::ResourceId, AnyError> {
+//   let flash_ctx = state.borrow_mut::<deno_flash::FlashContext>();
+//   let ctx = flash_ctx.servers.get_mut(&server_id).unwrap();
 
-  let tcp_stream = deno_flash::detach_socket(ctx, token)?;
-  Ok(
-    state
-      .resource_table
-      .add(TcpStreamResource::new(tcp_stream.into_split())),
-  )
-}
+//   let tcp_stream = deno_flash::detach_socket(ctx, token)?;
+//   Ok(
+//     state
+//       .resource_table
+//       .add(TcpStreamResource::new(tcp_stream.into_split())),
+//   )
+// }
 
 #[derive(Serialize)]
 #[serde(rename_all = "camelCase")]

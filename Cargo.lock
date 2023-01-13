@@ -1170,8 +1170,6 @@ dependencies = [
  "deno_core",
  "deno_crypto",
  "deno_fetch",
- "deno_ffi",
- "deno_flash",
  "deno_http",
  "deno_napi",
  "deno_net",

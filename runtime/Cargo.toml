@@ -30,8 +30,8 @@ deno_console.workspace = true
 deno_core.workspace = true
 deno_crypto.workspace = true
 deno_fetch.workspace = true
-deno_ffi.workspace = true
-deno_flash.workspace = true
+# deno_ffi.workspace = false
+# deno_flash.workspace = false
 deno_http.workspace = true
 deno_net.workspace = true
 deno_node.workspace = true
@@ -57,8 +57,8 @@ deno_console.workspace = true
 deno_core.workspace = true
 deno_crypto.workspace = true
 deno_fetch.workspace = true
-deno_ffi.workspace = true
-deno_flash.workspace = true
+# deno_ffi.workspace = false
+# deno_flash.workspace = false
 deno_http.workspace = true
 deno_napi.workspace = true
 deno_net.workspace = true
@@ -77,7 +77,13 @@ encoding_rs.workspace = true
 filetime = "0.2.16"
 fs3 = "0.5.0"
 http.workspace = true
-hyper = { workspace = true, features = ["server", "stream", "http1", "http2", "runtime"] }
+hyper = { workspace = true, features = [
+  "server",
+  "stream",
+  "http1",
+  "http2",
+  "runtime",
+] }
 libc.workspace = true
 log.workspace = true
 lzzzz.workspace = true
@@ -94,7 +100,18 @@ uuid.workspace = true
 
 [target.'cfg(windows)'.dependencies]
 fwdansi.workspace = true
-winapi = { workspace = true, features = ["commapi", "knownfolders", "mswsock", "objbase", "psapi", "shlobj", "tlhelp32", "winbase", "winerror", "winsock2"] }
+winapi = { workspace = true, features = [
+  "commapi",
+  "knownfolders",
+  "mswsock",
+  "objbase",
+  "psapi",
+  "shlobj",
+  "tlhelp32",
+  "winbase",
+  "winerror",
+  "winsock2",
+] }
 ntapi = "0.4.0"
 
 [target.'cfg(unix)'.dependencies]

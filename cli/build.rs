@@ -309,14 +309,14 @@ fn create_cli_snapshot(snapshot_path: PathBuf, files: Vec<PathBuf>) {
       false, // No --unstable.
     ),
     deno_node::init::<PermissionsContainer>(None), // No --unstable.
-    deno_ffi::init::<PermissionsContainer>(false),
+    // deno_ffi::init::<PermissionsContainer>(false),
     deno_net::init::<PermissionsContainer>(
       None, false, // No --unstable.
       None,
     ),
     deno_napi::init::<PermissionsContainer>(false),
     deno_http::init(),
-    deno_flash::init::<PermissionsContainer>(false), // No --unstable
+    // deno_flash::init::<PermissionsContainer>(false), // No --unstable
   ];
 
   create_snapshot(CreateSnapshotOptions {

@@ -56,14 +56,14 @@ mod not_docs {
     }
   }
 
-  impl deno_ffi::FfiPermissions for Permissions {
-    fn check(
-      &mut self,
-      _path: Option<&Path>,
-    ) -> Result<(), deno_core::error::AnyError> {
-      unreachable!("snapshotting!")
-    }
-  }
+  // impl deno_ffi::FfiPermissions for Permissions {
+  //   fn check(
+  //     &mut self,
+  //     _path: Option<&Path>,
+  //   ) -> Result<(), deno_core::error::AnyError> {
+  //     unreachable!("snapshotting!")
+  //   }
+  // }
 
   impl deno_napi::NapiPermissions for Permissions {
     fn check(
@@ -74,15 +74,15 @@ mod not_docs {
     }
   }
 
-  impl deno_flash::FlashPermissions for Permissions {
-    fn check_net<T: AsRef<str>>(
-      &mut self,
-      _host: &(T, Option<u16>),
-      _api_name: &str,
-    ) -> Result<(), deno_core::error::AnyError> {
-      unreachable!("snapshotting!")
-    }
-  }
+  // impl deno_flash::FlashPermissions for Permissions {
+  //   fn check_net<T: AsRef<str>>(
+  //     &mut self,
+  //     _host: &(T, Option<u16>),
+  //     _api_name: &str,
+  //   ) -> Result<(), deno_core::error::AnyError> {
+  //     unreachable!("snapshotting!")
+  //   }
+  // }
 
   impl deno_node::NodePermissions for Permissions {
     fn check_read(
@@ -140,14 +140,14 @@ mod not_docs {
         false, // No --unstable.
       ),
       deno_node::init::<Permissions>(None),
-      deno_ffi::init::<Permissions>(false),
+      // deno_ffi::init::<Permissions>(false),
       deno_net::init::<Permissions>(
         None, false, // No --unstable.
         None,
       ),
       deno_napi::init::<Permissions>(false),
       deno_http::init(),
-      deno_flash::init::<Permissions>(false), // No --unstable
+      // deno_flash::init::<Permissions>(false), // No --unstable
     ];
 
     create_snapshot(CreateSnapshotOptions {
